@@ -6,6 +6,7 @@
   align-items: center;
   flex-direction: column;
 }
+
 .menu .menuTitle {
   font-family: cursive;
   font-size: 60px;
@@ -17,9 +18,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   place-items: center;
+  margin: 0 auto;
 }
-
-/* MENU ITEM STYLING */
 
 .menuItem {
   border-radius: 15px;
@@ -28,6 +28,7 @@
   margin: 20px;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 }
+
 .menuItem:hover {
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.5);
   transition: 0.3s ease-in;
@@ -51,12 +52,14 @@
 
 @media only screen and (max-width: 1300px) {
   .menuList {
+    width: 90vw;
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media only screen and (max-width: 800px) {
   .menuList {
+    width: 100vw;
     grid-template-columns: 1fr;
   }
 }
