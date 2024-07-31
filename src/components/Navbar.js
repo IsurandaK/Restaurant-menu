@@ -1,37 +1,44 @@
-import React, { useState } from "react";
-import Logo from "../assets/pizzaLogo.png";
-import { Link } from "react-router-dom";
-import ReorderIcon from '@mui/icons-material/Reorder';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import "../styles/Navbar.css";
 
-function Navbar() {
-  const [openLinks, setOpenLinks] = useState(false);
+const NavBar = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleNavbar = () => {
-    setOpenLinks(!openLinks);
-  };
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setIsMobile(false);
+        setIsMenuOpen(false);
+      } else {
+        setIsMobile(true);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
-    <div className="navbar">
-      <div className="leftSide" id={openLinks ? "open" : "close"}>
-        <img src={Logo} />
-        <div className="hiddenLinks">
-          <Link to="/"> Home </Link>
-          <Link to="/menu"> Menu </Link>
-          <Link to="/about"> About </Link>
-          <Link to="/contact"> Contact </Link>
-        </div>
-      </div>
-      <div className="rightSide">
-        <Link to="/"> Home </Link>
-        <Link to="/menu"> Menu </Link>
-        <Link to="/about"> About </Link>
-        <Link to="/contact"> Contact </Link>
-        <button onClick={toggleNavbar}>
-          <ReorderIcon />
-        </button>
-      </div>
-    </div>
+    <nav className="navbar">
+      <h1 className="logo">Pizza Town</h1>
+      <ul className={isMenuOpen ? "nav-links-mobile" : "nav-links"}>
+        <li><Link to="/" onClick={() => setIsMenuOpen(false)}>Home</Link></li>
+        <li><Link to="/menu" onClick={() => setIsMenuOpen(false)}>Menu</Link></li>
+        <li><Link to="/about" onClick={() => setIsMenuOpen(false)}>About</Link></li>
+        <li><Link to="/contact" onClick={() => setIsMenuOpen(false)}>Contact</Link></li>
+      </ul>
+      <button className="mobile-menu-icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        {isMenuOpen ? '✖' : '☰'}
+      </button>
+    </nav>
   );
-}
+};
 
-export default Navbar;
+export default NavBar;
