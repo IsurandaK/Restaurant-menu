@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import PizzaLeft from "../assets/pizzaLeft.jpg";
+import PizzaLeft from "../assets/contact.jpg";
 import "../styles/Contact.css";
 import emailjs from 'emailjs-com';
 

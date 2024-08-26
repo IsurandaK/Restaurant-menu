@@ -14,6 +14,7 @@ function Menu() {
               key={key}
               image={menuItem.image}
               name={menuItem.name}
+              ingredients={menuItem.ingredients}
               price={menuItem.price}
             />
           );
