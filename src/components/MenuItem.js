@@ -6,7 +6,9 @@ function MenuItem({ image, name, ingredients, price }) {
       <div style={{ backgroundImage: `url(${image})` }}> </div>
       <h1> {name} </h1>
       <p> {ingredients} </p>
-      <p><b> Rs. {price} </b></p>
+      <p style={{ backgroundColor: 'yellow', textAlign: 'center' }}>
+        <b> Rs. {price} </b>
+      </p>
     </div>
   );
 }
