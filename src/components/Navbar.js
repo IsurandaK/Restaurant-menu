@@ -3,17 +3,13 @@ import { Link } from 'react-router-dom';
 import "../styles/Navbar.css";
 
 const NavBar = () => {
-  const [isMobile, setIsMobile] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 768) {
-        setIsMobile(false);
         setIsMenuOpen(false);
-      } else {
-        setIsMobile(true);
-      }
+      } 
     };
 
     window.addEventListener('resize', handleResize);
